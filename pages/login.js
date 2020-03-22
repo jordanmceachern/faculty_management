@@ -1,11 +1,15 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 
-export default function Index () {
+const Login = () => {
   return (
     <>
       <Navbar />
-      <p>Faculty Management</p>
+      <p>
+        Login Page
+      </p>
     </>
   )
 }
+
+export default Login
