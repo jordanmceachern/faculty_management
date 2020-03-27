@@ -7,7 +7,7 @@ router.get('/login', passport.authenticate('auth0', {
   scope: 'openid email profile'
 }), (req, res) => res.redirect('/dashboard'))
 
-router.get('/login/callback', (req, res, next) => {
+router.get('/callback', (req, res, next) => {
   passport.authenticate('auth0', (err, user) => {
     if (err) return next(err)
     if (!user) return res.redirect('/login')
