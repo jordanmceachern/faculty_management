@@ -3,7 +3,8 @@ const express = require('express')
 const session = require('express-session')
 const http = require('http')
 const next = require('next')
-const auth = require('./auth')
+const authentication = require('./authentication')
+const database = require('./database')
 const passport = require('passport')
 const Auth0Strategy = require('passport-auth0')
 const uid = require('uid-safe')
@@ -52,7 +53,10 @@ Next.prepare().then(() => {
   app.use(passport.session())
 
   // Auth routes
-  app.use(auth)
+  app.use(authentication)
+
+  // API routes
+  app.use(database)
 
   // Restrict access to specified routes
   const restrictAccess = (req, res, next) => {
@@ -64,7 +68,7 @@ Next.prepare().then(() => {
   app.use('/faculty', restrictAccess)
   app.use('/semester-builder', restrictAccess)
 
-  // handling all other routes with Next.js
+  // Handle all other routes with Next.js
   app.get('*', handle)
 
   http.createServer(app).listen(process.env.PORT, () => {

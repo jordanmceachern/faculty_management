@@ -1,11 +1,12 @@
 import React from 'react'
-import Navbar from './components/Navbar'
+import Navigation from './components/Navigation'
 
-export default function Index () {
+const Index = () => {
   return (
-    <>
-      <Navbar />
+    <Navigation>
       <p>Faculty Management</p>
-    </>
+    </Navigation>
   )
 }
+
+export default Index

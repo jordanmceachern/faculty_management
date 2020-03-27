@@ -1,12 +1,11 @@
 import React from 'react'
-import Navbar from './components/Navbar'
+import Navigation from './components/Navigation'
 
 const SemesterBuilder = () => {
   return (
-    <>
-      <Navbar />
+    <Navigation>
       <p>Semester Builder</p>
-    </>
+    </Navigation>
   )
 }
 
