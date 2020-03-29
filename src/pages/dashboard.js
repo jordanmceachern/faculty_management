@@ -1,35 +1,25 @@
 import React from 'react'
 import Navigation from './components/Navigation'
-import App from 'next/app'
 
-class Dashboard extends App {
-  static async getInitialProps (ctx) {
-    let pageProps = await ctx || {}
-    if (ctx.req && ctx.req.session.passport) {
-      pageProps = ctx.req.session.passport.user
-    }
-    return { pageProps }
-  }
+const Dashboard = props => {
+  return (
+    <Navigation>
+      <p>Dashboard</p>
+      {
+        props.username && (
+          <p>Welcome {props.username}!</p>
+        )
+      }
+    </Navigation>
+  )
+}
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      user: props.pageProps.nickname || null
-    }
+Dashboard.getInitialProps = async ctx => {
+  let username = await ctx || {}
+  if (ctx.req && ctx.req.session.passport) {
+    username = ctx.req.session.passport.user.nickname
   }
-
-  render () {
-    return (
-      <Navigation>
-        <p>Dashboard</p>
-        {
-          this.state.user && (
-            <p>Welcome {this.state.user}!</p>
-          )
-        }
-      </Navigation>
-    )
-  }
+  return { username }
 }
 
 export default Dashboard
