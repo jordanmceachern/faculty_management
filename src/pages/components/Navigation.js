@@ -1,9 +1,12 @@
 import Link from 'next/link'
+import Head from 'next/head'
 
 const Navigation = props => {
-  console.log('props.user: ', props?.user)
   return (
     <div className='navbar'>
+      <Head>
+        <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
+      </Head>
       <Link href='/'>
         <a title='Navigate to the landing page'>Landing</a>
       </Link>
@@ -42,17 +45,6 @@ const Navigation = props => {
       }
     </div>
   )
-}
-
-Navigation.getInitialProps = async ({ Component, ctx }) => {
-  let user = {}
-  if (Component.getInitialProps) {
-    user = await Component.getInitialProps(ctx)
-  }
-  if (ctx.req && ctx.req.session.passport) {
-    user = ctx.req.session.passport.user
-  }
-  return { user }
 }
 
 export default Navigation
