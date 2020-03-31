@@ -1,17 +1,17 @@
 import React from 'react'
-import Navigation from './components/Navigation'
+import PropTypes from 'prop-types'
+import Index from './index'
 
 const Dashboard = props => {
-  return (
-    <Navigation>
-      <p>Dashboard</p>
-      {
-        props.username && (
-          <p>Welcome {props.username}!</p>
-        )
-      }
-    </Navigation>
-  )
+  const dashboardPage = () => {
+    return (
+      <>
+        <p>Dashboard</p>
+        <p>Welcome {props.username}!</p>
+      </>
+    )
+  }
+  return <Index children={dashboardPage()} />
 }
 
 Dashboard.getInitialProps = async ctx => {
@@ -20,6 +20,10 @@ Dashboard.getInitialProps = async ctx => {
     username = ctx.req.session.passport.user.nickname
   }
   return { username }
+}
+
+Dashboard.propTypes = {
+  username: PropTypes.string.isRequired
 }
 
 export default Dashboard

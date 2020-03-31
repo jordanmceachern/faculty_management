@@ -1,12 +1,18 @@
 import React from 'react'
-import Navigation from './components/Navigation'
+// import PropTypes from 'prop-types'
+import Index from './index'
 
 const SemesterBuilder = () => {
-  return (
-    <Navigation>
+  const semesterBuilderPage = () => {
+    return (
       <p>Semester Builder</p>
-    </Navigation>
-  )
+    )
+  }
+  return <Index children={semesterBuilderPage()} />
 }
+
+// SemesterBuilder.propTypes = {
+//   propName: PropTypes.object
+// }
 
 export default SemesterBuilder

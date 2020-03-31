@@ -1,12 +1,19 @@
 import React from 'react'
-import Navigation from './components/Navigation'
+// import PropTypes from 'prop-types'
+import Index from './index'
 
 const Faculty = () => {
-  return (
-    <Navigation>
+  const facultyPage = () => {
+    return (
       <p>Faculty</p>
-    </Navigation>
-  )
+    )
+  }
+
+  return <Index children={facultyPage()} />
 }
+
+// Faculty.propTypes = {
+//   optionalObject: PropTypes.object
+// }
 
 export default Faculty

@@ -1,23 +1,23 @@
 import Link from 'next/link'
-import Head from 'next/head'
 
-const Navigation = props => {
+const Navbar = props => {
   return (
     <div className='navbar'>
-      <Head>
-        <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
-      </Head>
       <Link href='/'>
         <a title='Navigate to the landing page'>Landing</a>
       </Link>
       {
         props.user
-          ? <Link href='/logout'>
-            <a style={{ marginLeft: '10px' }} title='Log out of your session'>Logout</a>
-          </Link>
-          : <Link href='/login'>
-            <a style={{ marginLeft: '10px' }} title='Navigate to the login page'>Login</a>
-          </Link>
+          ? (
+            <Link href='/logout'>
+              <a style={{ marginLeft: '10px' }} title='Log out of your session'>Logout</a>
+            </Link>
+          )
+          : (
+            <Link href='/login'>
+              <a style={{ marginLeft: '10px' }} title='Navigate to the login page'>Login</a>
+            </Link>
+          )
       }
       {
         props.user && (
@@ -47,4 +47,4 @@ const Navigation = props => {
   )
 }
 
-export default Navigation
+export default Navbar

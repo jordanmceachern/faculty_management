@@ -1,12 +1,24 @@
 import React from 'react'
-import Navigation from './components/Navigation'
+import PropTypes from 'prop-types'
+import Head from 'next/head'
+import Landing from './components/Landing'
+import Navbar from './components/Navbar'
 
-const Index = () => {
+const Index = props => {
   return (
-    <Navigation>
-      <p>Faculty Management</p>
-    </Navigation>
+    <Navbar>
+      <Head>
+        <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
+      </Head>
+      {
+        props.children || <Landing />
+      }
+    </Navbar>
   )
+}
+
+Index.propTypes = {
+  children: PropTypes.object
 }
 
 export default Index
